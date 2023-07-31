@@ -1,0 +1,16 @@
+.audioControls {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin: 0 auto 15px;
+}
+.audioControls .prev svg,
+.audioControls .next svg {
+  width: 35px;
+  height: 35px;
+}
+.audioControls .play svg,
+.audioControls .pause svg {
+  height: 40px;
+  width: 40px;
+}

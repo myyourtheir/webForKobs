@@ -1,0 +1,13 @@
+.TopSide{
+	grid-area: a;
+	color: black;
+	/* margin: 0; */
+}
+h2{
+	position: relative;
+	font-size: calc(1em + 2vw);
+	font-family: 'Roboto Mono', monospace;
+	margin: auto;
+	/* padding: auto; */
+	word-break: break-all;
+}

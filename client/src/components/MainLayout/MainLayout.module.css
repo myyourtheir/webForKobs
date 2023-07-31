@@ -1,0 +1,11 @@
+.MainLayout{
+	display: flex;
+	position: absolute;
+	background-color: rgb(253, 253, 253);
+	width: 50vw;
+	margin-top: 10vh; 
+	left: 25vw;
+	min-height: 90vh;
+	justify-content: center;
+	align-items: start;
+}

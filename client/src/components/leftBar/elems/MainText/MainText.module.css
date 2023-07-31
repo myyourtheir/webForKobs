@@ -1,0 +1,9 @@
+.MainText{
+		grid-area: b;
+		position: relative;
+		font-size: calc(0.1em + 1vw);
+	font-family: 'Roboto Mono', monospace;
+	margin: 21rem 1vw 0 1vw  ;
+	padding: 0;
+	/* word-break: break-all; */
+}

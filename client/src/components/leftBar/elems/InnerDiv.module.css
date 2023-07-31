@@ -1,0 +1,7 @@
+.InnerDiv{
+	display: grid;
+	font-family: 'Roboto Mono', monospace;
+	grid-template-rows: 1fr 1fr 1fr;
+	justify-content: center;
+	
+}
