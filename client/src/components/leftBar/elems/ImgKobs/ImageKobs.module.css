@@ -4,15 +4,16 @@
 }
 .ImgK{
 
-  width: calc(0.5em + 15vw);
-  height: calc(0.5em + 15vw);
+  width: calc(3em + 10vw);
+  height: calc(3em + 10vw);
 	margin: auto;
 }
 
-@media(width<900px){
+
+@media(width<1400px){
 	.ImgK{
-		width: calc(1em + 15vw);
-		height: calc(1em + 15vw);
+		width: calc(7em + 15vw);
+		height: calc(7em + 15vw);
 		margin: auto;
 	}
 }

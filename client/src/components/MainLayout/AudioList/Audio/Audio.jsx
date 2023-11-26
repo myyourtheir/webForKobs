@@ -13,7 +13,7 @@ function Audio({el, i}) {
 	const audioRef = useRef(HTMLAudioElement)
 	const colorRef = useRef(HTMLElement)
 	const intervalRef = useRef();
-
+	console.log()
 	const {duration} = audioRef.current
 
 	const currentPercentage = duration
@@ -48,7 +48,7 @@ function Audio({el, i}) {
   };
 
 	const startTimer = () => {
-    // Clear any timers already running
+   
     clearInterval(intervalRef.current);
 
     intervalRef.current = setInterval(() => {
@@ -80,13 +80,20 @@ function Audio({el, i}) {
 	}
 
 	// Control playing and pasue
-	useLayoutEffect(()=>{
+	useEffect(()=>{
 		if (currentIndexOfPlaying===i ){
 			startTimer()
 			audioRef.current.play()
 			setIsPlaying(true)
 			
-		}else{
+		}else if(currentIndexOfPlaying===null){
+			audioRef.current.pause()
+			setIsPlaying(false)
+		}
+		else{
+			audioRef.current.currentTime = 0
+			clearInterval(intervalRef.current)
+			setTrackProgress(0)
 			audioRef.current.pause()
 			setIsPlaying(false)
 		}

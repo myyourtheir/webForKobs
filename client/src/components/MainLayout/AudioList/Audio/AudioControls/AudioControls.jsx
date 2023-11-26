@@ -11,13 +11,14 @@ const AudioControls = ({isPlaying, onPlayPauseClick, onNextTrack, onPrevTrack}) 
 	
 	return(
   <div className={styles.audioControls}>
-    <button
+    {isPlaying && <button
       type="button"
       aria-label="Previous"
 			onClick={onPrevTrack}
     >
       <Prev className={styles.svg}/>
     </button>
+		}
     {isPlaying ? (
       <button
         type="button"
@@ -37,7 +38,7 @@ const AudioControls = ({isPlaying, onPlayPauseClick, onNextTrack, onPrevTrack}) 
         <Play className={styles.svg}/>
       </button>
     )}
-    <button
+    {isPlaying && <button
       type="button"
       className={styles.next}
       aria-label="Next"
@@ -45,6 +46,7 @@ const AudioControls = ({isPlaying, onPlayPauseClick, onNextTrack, onPrevTrack}) 
     >
       <Next className={styles.svg}/>
     </button>
+		}
   </div>
 )};
 

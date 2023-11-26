@@ -2,8 +2,9 @@
 .closeIcon{
 	position: absolute;
 	top: 5px;
-	right: 10px;
+	right: 5px;
 	z-index: 20;
+	cursor: pointer;
 }
 
 .LeftBar{
@@ -19,6 +20,20 @@
 	width: 25vw;
 	z-index: 19;
 	transition: all 0.3s;
+	overflow-y: auto;
+}
+
+.LeftBar::-webkit-scrollbar {
+  width: 7px;              
+}
+.LeftBar::-webkit-scrollbar-track {
+  background: rgb(160, 23, 128);      
+}
+
+.LeftBar::-webkit-scrollbar-thumb {
+  background-color: rgb(68, 68, 161);    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+  border: 1px solid rgb(195, 195, 15)
 }
 /* .LeftBar:hover{
 	opacity: 1;
