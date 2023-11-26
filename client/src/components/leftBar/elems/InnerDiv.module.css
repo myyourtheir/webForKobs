@@ -1,7 +1,9 @@
 .InnerDiv{
-	display: grid;
+	display: flex;
 	font-family: 'Roboto Mono', monospace;
-	grid-template-rows: 1fr 1fr 1fr;
-	justify-content: center;
+	position: absolute;
+	flex-direction: column;
+	justify-items: center;
+	align-content: center;
 	
 }

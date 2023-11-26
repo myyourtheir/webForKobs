@@ -1,9 +1,20 @@
 .MainText{
-		grid-area: b;
-		position: relative;
-		font-size: calc(0.1em + 1vw);
+	position: relative;
+	font-size: calc(0.1em + 1vw);
 	font-family: 'Roboto Mono', monospace;
-	margin: 21rem 1vw 0 1vw  ;
-	padding: 0;
+	margin:auto;
+	padding: 1px;
 	/* word-break: break-all; */
+}
+@media(width<1200px){
+	.MainText{
+		font-size: calc(0.4em + 1vw);
+	}
+
+}
+@media(width<900px){
+	.MainText{
+		font-size: calc(0.6em + 1vw);
+	}
+
 }

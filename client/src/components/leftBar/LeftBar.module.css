@@ -1,21 +1,39 @@
 
+.closeIcon{
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	z-index: 20;
+}
 
 .LeftBar{
 	font-family: 'Roboto Mono', monospace;
 	position: fixed;
-	opacity: 0;
+	opacity: 1;
 	top: 0;
 	left: 0;
-	background-color: rgba(242, 243, 245, 0.809);
+	background-color: rgba(249, 149, 249, 0.809);
 	
 	border-right: 1 #ffffff;
 	height: 100vh;
 	width: 25vw;
-	z-index: 9;
+	z-index: 19;
 	transition: all 0.3s;
 }
-.LeftBar:hover{
+/* .LeftBar:hover{
 	opacity: 1;
 	transition: all 0.5s;
 	z-index: 12;
+} */
+
+@media(width<1200px){
+	.LeftBar{
+		width: 40vh;
+	}
+}
+@media(width<900px){
+	.LeftBar{
+		width: 50vw;
+	}
+
 }

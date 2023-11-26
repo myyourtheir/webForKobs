@@ -1,11 +1,25 @@
+
 .MainLayout{
 	display: flex;
 	position: absolute;
-	background-color: rgb(253, 253, 253);
-	width: 50vw;
-	margin-top: 10vh; 
-	left: 25vw;
-	min-height: 90vh;
+	background-color: rgb(0, 0, 0);
 	justify-content: center;
-	align-items: start;
+	align-items: flex-start;
 }
+
+@media (width<=900px){
+.MainLayout{
+	width: 90vw;
+	margin-top: 10vh; 
+	left: 5vw;
+	min-height: 90vh;
+	
+}}
+
+@media (width>900px){
+	.MainLayout{
+		width: 50vw;
+		margin-top: 10vh; 
+		left: 25vw;
+		min-height: 90vh;
+	}}

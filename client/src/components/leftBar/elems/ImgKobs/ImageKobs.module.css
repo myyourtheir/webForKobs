@@ -1,15 +1,18 @@
 .ImageKobs{
-	grid-area: a;
-	margin-top: 5em;
-	display: block;
-	/* justify-content: center; */
-	/* object-fit: cover; */
+
+	margin: 1em auto;
 }
 .ImgK{
-	/* border-radius: 50%; */
-	object-fit: cover;
-	display: block;
-  width: 15em;
-  height: 15em;
+
+  width: calc(0.5em + 15vw);
+  height: calc(0.5em + 15vw);
 	margin: auto;
+}
+
+@media(width<900px){
+	.ImgK{
+		width: calc(1em + 15vw);
+		height: calc(1em + 15vw);
+		margin: auto;
+	}
 }

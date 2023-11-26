@@ -1,4 +1,4 @@
-const AudioFile = require('../models/Audio')
+const AudioFile = require('../models/Audio.js')
 
 const handleError = (res, error) =>{
 	res.status(500).json({error})

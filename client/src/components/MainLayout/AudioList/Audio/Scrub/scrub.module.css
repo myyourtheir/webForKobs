@@ -1,0 +1,12 @@
+.progress{ 
+	accent-color: white;
+	width: 100%;
+	grid-area: b;
+}
+.progress::-webkit-slider-runnable-track{
+	/* width: 80%; */
+  height: 1.2em;
+  cursor: pointer;
+  /* border: 1px solid #29334f; */
+  overflow: hidden;
+}
