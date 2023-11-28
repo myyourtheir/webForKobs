@@ -9,7 +9,6 @@ function Filter({filterText, setFilterText}) {
 		className={styles.filter}
 		placeholder='Что ищем?'
 		>
-
 		</input>
 	 );
 }
