@@ -3,7 +3,7 @@ import styles from "./AudioList.module.css"
 import { useDispatch } from 'react-redux'
 import { getAudio } from '../../../store/audioSlice'
 import Filter from './Filter/Filter'
-import MappedAudios from './MappedAudios/MappedAudios'
+// import MappedAudios from './MappedAudios/MappedAudios'
 
 
 const AudioList = () => {
@@ -28,7 +28,7 @@ const dispatch = useDispatch()
 		filterText={filterText}
 		setFilterText={setFilterText}
 		/>
-		<MappedAudios filterText={filterText}/>
+		{/* <MappedAudios filterText={filterText}/> */}
 
   </div>
   );

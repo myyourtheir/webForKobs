@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import Audio from '../Audio/Audio'
+import Audio from '../../BottomAudioPlayer/BottomAudioPlayer'
 
 function MappedAudios({filterText}) {
 	const audioFiles = useSelector((state=>state.audios.data))

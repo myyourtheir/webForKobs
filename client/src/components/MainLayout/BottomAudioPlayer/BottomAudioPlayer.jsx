@@ -1,28 +1,31 @@
 import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import AudioControls from "./AudioControls/AudioControls"
-import styles from './bottomAudioPlayer.module.css'
+import styles from './BottomAudioPlayer.module.css'
 // import getRandomColor from '../../../../utils/randomColor'
 import Scrub from './Scrub/Scrub'
 import { useDispatch, useSelector } from 'react-redux'
-import { setIndexOfPlaying, setIsPlaying } from '../../../store/audioSlice'
-
+import { setIndexOfPlaying } from '../../../store/audioSlice'
 
 function BottomAudioPlayer() {
-	// const [isPlaying, setIsPlaying] = useState(false)
+	const [isPlaying, setIsPlaying] = useState(false)
 	const [trackProgress, setTrackProgress] = useState(0);
 	const audioRef = useRef(HTMLAudioElement)
 	const colorRef = useRef(HTMLElement)
 	const intervalRef = useRef();
+	console.log()
 	const {duration} = audioRef.current
 
-	const isPlaying = useSelector(state => state.audios.isPlaying)
+	const currentPercentage = duration
+    ? `${(trackProgress / duration) * 100}%`
+    : "0%";
+  const trackStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))
+  `;
 
 	const i = useSelector(state=>state.audios.indexOfPlaying)
-	const audios = useSelector(state=>state.audios.data)
-	const currentAudio = audios[i]
-	const lengthOfTracks =audios.length
-	const dispatch = useDispatch()
-	const setIsPlaying = (bool)=> dispatch(setIsPlaying(bool))
+	const el = useSelector(state=>state.audios.data)[i]
+	const dispatch = useDispatch(HTMLAudioElement)
+
 	useEffect(()=>{
 		colorRef.current.style.setProperty('--active-color', '#481986')
 
@@ -39,8 +42,7 @@ function BottomAudioPlayer() {
 	const onScrubEnd = () => {
     // If not already playing, start
     if (!isPlaying) {
-      audioRef.current.play()
-			setIsPlaying(true)
+      dispatch(setIndexOfPlaying(i))
     }
     startTimer();
   };
@@ -59,15 +61,9 @@ function BottomAudioPlayer() {
   }
 
 	// Control next and prev track
-
-	useEffect(()=>{
-		i!==null
-		? audioRef.current.play()
-		: setIsPlaying(false)
-	}, [i])
+	const lengthOfTracks = useSelector(state=>state.audios.data.length)
 
 	const onNextTrack = ()=>{
-		
 		dispatch(setIndexOfPlaying(
 			i<lengthOfTracks-1
 			? i+1
@@ -76,41 +72,60 @@ function BottomAudioPlayer() {
 	}
 
 	const onPrevTrack = ()=>{
-		
 		dispatch(setIndexOfPlaying(
 			i-1<0
 			? lengthOfTracks-1
 			: i-1
 		))
-		
 	}
+
+	// Control playing and pasue
+	// useEffect(()=>{
+	// 	if (currentIndexOfPlaying===i ){
+	// 		startTimer()
+	// 		audioRef.current.play()
+	// 		setIsPlaying(true)
+			
+	// 	}else if(currentIndexOfPlaying===null){
+	// 		audioRef.current.pause()
+	// 		setIsPlaying(false)
+	// 	}
+	// 	else{
+	// 		audioRef.current.currentTime = 0
+	// 		clearInterval(intervalRef.current)
+	// 		setTrackProgress(0)
+	// 		audioRef.current.pause()
+	// 		setIsPlaying(false)
+	// 	}
+		
+	// // eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [currentIndexOfPlaying])
+
+
+
+
 
 	const PlayPauseClick =()=>{
 
-		isPlaying
+		isPlaying 
 		? (()=>{
-			audioRef.current.pause()
-			setIsPlaying(false)}
-			
-			)()
-		: (()=>{
-			audioRef.current.play()
-			setIsPlaying(true)
-			startTimer()}
-			)()
+			dispatch(setIndexOfPlaying(null))
+
+		})()	
+		: dispatch(setIndexOfPlaying(i))
 	}
 
 	
 	return (
 		<div ref={colorRef} className={`${styles.audioItem} ${isPlaying? styles.playing: styles.paused}`}>
-			
-			<p className={styles.filename}>{currentAudio?.filename}</p>
-			<audio ref={audioRef}	src={currentAudio?.url}></audio>
+			<p className={styles.filename}>{el.filename}</p>
+			<audio ref={audioRef}	src={el.url}></audio>
 			<Scrub 
 			duration ={duration} 
 			trackProgress={trackProgress}
 			onScrub={onScrub}
 			onScrubEnd={onScrubEnd}
+			style={{ background: trackStyling }}
 			/>
 			
 			<AudioControls 
@@ -119,7 +134,6 @@ function BottomAudioPlayer() {
 			onPrevTrack={onPrevTrack}
 			onNextTrack={onNextTrack}
 			/>
-			
 		</div> 
 	);
 }
