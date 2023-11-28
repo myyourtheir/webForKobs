@@ -3,7 +3,7 @@
 	position: fixed;
 	width: 100vw; 
   height: 100vh; 
-  background-color: #000000; 
+  background-color: rgb(20,25,45); 
 	opacity: 1;
 	z-index: 10;
 }

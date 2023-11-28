@@ -2,7 +2,7 @@ html, body{
 	margin: 0;
 	height: 100%;
 	width: 100%;
-	background-color: black;
+	background-color: rgba(20,25,45,0.9);
 	
 }
 @media (width>=576px) and (width<1199.98px) {

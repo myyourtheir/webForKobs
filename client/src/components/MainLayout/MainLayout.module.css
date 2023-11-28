@@ -2,7 +2,7 @@
 .MainLayout{
 	display: flex;
 	position: absolute;
-	background-color: rgb(0, 0, 0);
+	background-color: inherit;
 	justify-content: center;
 	align-items: flex-start;
 }

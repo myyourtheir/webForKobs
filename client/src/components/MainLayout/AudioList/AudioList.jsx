@@ -20,12 +20,18 @@ const dispatch = useDispatch()
 	
   return (
     <div id="1" className={styles.AudioList}>
-		{audioFiles  &&
-    audioFiles.map( (el, index) => { 
-			return (
-				<Audio key={el._id} el={el} i={index}></Audio>
-				)	
-			})
+		
+		{/* Filter */}
+		{audioFiles
+		? (()=>{
+			return audioFiles.map( (el, index) => { 
+				return (
+					<Audio key={el._id} el={el} i={index}></Audio>
+					)	
+				})
+			}
+		)()
+		: null
 		}
 
   </div>
