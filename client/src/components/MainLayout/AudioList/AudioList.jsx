@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./AudioList.module.css"
 import Audio from './Audio/Audio'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAudio } from '../../../store/audioSlice'
+import Filter from './Filter/Filter'
 
 
 const AudioList = () => {
+
+const [filterText, setFilterText] = useState('')
 const audioFiles = useSelector((state=>state.audios.data))
 
 const dispatch = useDispatch()
@@ -21,7 +24,10 @@ const dispatch = useDispatch()
   return (
     <div id="1" className={styles.AudioList}>
 		
-		{/* Filter */}
+		<Filter
+		filterText={filterText}
+		setFilterText={setFilterText}
+		/>
 		{audioFiles
 		? (()=>{
 			return audioFiles.map( (el, index) => { 
