@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from "./MainLayout.module.css"
-import AudioList from './AudioList/AudioList';
+import DataFetchingWrapper from './DataFetchingWrapper'
+
+
 function MainLayout() {
 	return ( 
-	 <div className={styles.MainLayout}>
-		<AudioList/>
-	 </div>);
+	<div className={styles.MainLayout}>
+		<DataFetchingWrapper/>
+	</div>);
 }
 
 export default MainLayout;

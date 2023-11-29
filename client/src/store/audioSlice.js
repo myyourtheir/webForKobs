@@ -24,12 +24,16 @@ export const getAudio = createAsyncThunk(
 		isLoading: true,
 		data: null,
 		error: null,
-		indexOfPlaying: null
+		indexOfPlaying: 0,
+		isPlaying: false,
 	},
 	reducers:{
 		setIndexOfPlaying:(state,action)=>{
 			state.indexOfPlaying = action.payload
 		},
+		setIsPlaying:(state,action)=>{
+			state.isPlaying = action.payload
+		}
 	},
 	extraReducers:(builder)=>{
 		builder.addCase(getAudio.pending, (state)=>{
@@ -46,5 +50,5 @@ export const getAudio = createAsyncThunk(
 		})
 	}
 })
-export const {setIndexOfPlaying} = audioSlice.actions
+export const {setIndexOfPlaying, setIsPlaying} = audioSlice.actions
 export default audioSlice
