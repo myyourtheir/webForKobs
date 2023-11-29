@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIndexOfPlaying, setIsPlaying } from '../../../store/audioSlice'
 import AudioControls from './AudioControls/AudioControls'
+import styles from './BottomAudioPlayer.module.css'
 
 function BottomAudioPlayer() {
 	const [trackProgress, setTrackProgress] = useState(0)
@@ -12,7 +13,8 @@ function BottomAudioPlayer() {
 	const [isReady, setIsReady] = useState(false);
 	const dispatch = useDispatch()
 
-	console.log('rendedred')
+	const {duration} = audioRef.current
+
 	useEffect(() => {
 		if (isPlaying) {
 			audioRef.current.play();
@@ -42,7 +44,6 @@ function BottomAudioPlayer() {
 		} else {
 			setIsReady(true);
 		}
-		// return ()=>{ isReady.current = false}
 	}, [currentIndex]);
 
 	const startTimer = () => {
@@ -80,13 +81,45 @@ function BottomAudioPlayer() {
 			dispatch(setIsPlaying(true))
 		}
 	}
+
+	const onScrub = (value) => {
+		// Clear any timers already running
+		clearInterval(intervalRef.current);
+		audioRef.current.currentTime = value;
+		setTrackProgress(audioRef.current.currentTime);
+	}
+	
+	const onScrubEnd = () => {
+		// If not already playing, start
+		if (!isPlaying) {
+			dispatch(setIsPlaying(true));
+		}
+		startTimer();
+	}
+
+
 	return ( 
-		<div>
+		<div className={styles.player}>
+			<p className={styles.text}>
+				{tracks[currentIndex].filename}
+			</p>
 			<AudioControls 
 				handlePlayPauseClick = {handlePlayPauseClick}
 				handleNextClick = {handleNextClick}
 				handlePrevClick = {handlePrevClick}
 			/>
+			<input
+				type="range"
+				value={trackProgress}
+				step="1"
+				min="0"
+				max={duration ? duration : `${duration}`}
+				className={styles.progress}
+				onChange={(e) => onScrub(e.target.value)}
+				onMouseUp={onScrubEnd}
+				onKeyUp={onScrubEnd}
+		/>
+
 		</div>
 	);
 }

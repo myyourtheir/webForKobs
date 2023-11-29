@@ -1,0 +1,39 @@
+.player{
+	position: fixed;
+	bottom: 10px;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-template-rows: 1fr 2fr;
+	grid-template-areas: 
+	"a b"
+	"a c";
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	max-height: 100px;
+	background-color: rgb(28, 32, 49);
+	box-shadow: rgba(250, 28, 169, 0.4) 5px -5px;
+}
+
+
+
+.progress{ 
+	accent-color: white;
+	width: 90%;
+	grid-area: c;
+	margin: auto;
+}
+.progress::-webkit-slider-runnable-track{
+  height: 1.2em;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.text{
+	grid-area: b;
+	font-size: 20px;
+	font-family: 'Roboto Mono', monospace;
+	margin:auto;
+	color: white;
+}
+

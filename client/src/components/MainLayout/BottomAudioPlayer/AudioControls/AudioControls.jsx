@@ -10,24 +10,41 @@ function AudioControls({handlePlayPauseClick, handleNextClick, handlePrevClick})
 	const isPlaying = useSelector(state=>state.audios.isPlaying)
 	return ( 
 		<div className={styles.AudioControls}>
-			<Prev
-				onClick={handlePrevClick}
-			/>
-
-			{isPlaying
-				? 
-				<Pause
-					onClick={handlePlayPauseClick}
-				/>
-				: 
-				<Play 
-					onClick ={handlePlayPauseClick}
-				/>
-			}
-
-			<Next
-				onClick={handleNextClick}
-			/>
+    <button
+      type="button"
+      className={styles.prev}
+      aria-label="Previous"
+      onClick={handlePrevClick}
+    >
+      <Prev />
+    </button>
+    {isPlaying ? (
+      <button
+        type="button"
+        className={styles.pause}
+        onClick={() => handlePlayPauseClick(false)}
+        aria-label="Pause"
+      >
+        <Pause />
+      </button>
+    ) : (
+      <button
+        type="button"
+        className={styles.play}
+        onClick={() => handlePlayPauseClick(true)}
+        aria-label="Play"
+      >
+        <Play />
+      </button>
+    )}
+    <button
+      type="button"
+      className={styles.next}
+      aria-label="Next"
+      onClick={handleNextClick}
+    >
+      <Next />
+    </button>
 		</div>
 	);
 }
