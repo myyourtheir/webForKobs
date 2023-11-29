@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAudio } from '../../store/audioSlice'
 import BottomAudioPlayer from './BottomAudioPlayer/BottomAudioPlayer'
 import { useEffect } from 'react'
+import AudioList from './AudioList/AudioList'
 
 
 function DataFetchingWrapper() {
@@ -24,6 +25,7 @@ function DataFetchingWrapper() {
 		<>{data 
 		?
 		<>
+			<AudioList/>
 			<BottomAudioPlayer/>
 		</>
 		: 

@@ -39,7 +39,9 @@ function BottomAudioPlayer() {
 	
 		if (isReady) {
 			audioRef.current.play();
-			dispatch(setIsPlaying(true));
+				if (!isPlaying){
+					dispatch(setIsPlaying(true))
+				}
 			startTimer();
 		} else {
 			setIsReady(true);

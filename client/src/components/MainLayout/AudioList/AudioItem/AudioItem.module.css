@@ -1,0 +1,22 @@
+.Audio{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-template-rows: 1fr;
+	justify-content: center;
+	margin-top: 1.5rem;
+
+}
+
+.filename{
+	font-size: 20px;
+	font-family: 'Roboto Mono', monospace;
+	margin:auto;
+	color: white;
+	margin: auto;
+}
+
+button{
+	background-color: transparent;
+	border: transparent;
+	cursor: pointer;
+}
