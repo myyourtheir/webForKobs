@@ -1,18 +1,30 @@
-.audioControls {
-  display: flex;
-  justify-content: space-around;
-	grid-area: c;
-	margin: 3px;
+.AudioControls{
+	display: flex;
+	justify-content: space-around;
+	width: 75%;
+	grid-area: a;
+	margin: auto;
 }
 
-button{
+.prev svg, 
+.next svg{
+	width: calc(2rem+1vw);
+  height: calc(2rem+1vw);
+}
+
+.play svg, 
+.pause svg{
+	width: (2rem+1vw);
+  height: calc(2rem+1vw);
+}
+
+.prev, 
+.next,
+.play, 
+.pause{
 	background-color: transparent;
 	border: transparent;
 	cursor: pointer;
 }
-.svgPausePlay{
-	width: 13px;
-}
-.svg path{
-	fill: white;
-}
+
+

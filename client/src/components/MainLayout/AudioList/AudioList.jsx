@@ -1,37 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import styles from "./AudioList.module.css"
-import { useDispatch } from 'react-redux'
-import { getAudio } from '../../../store/audioSlice'
-import Filter from './Filter/Filter'
-// import MappedAudios from './MappedAudios/MappedAudios'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import AudioItem from './AudioItem/AudioItem'
+import Filter from './Filter'
+import styles from './AudioList.module.css'
 
-
-const AudioList = () => {
-
-const [filterText, setFilterText] = useState('')
-
-
-const dispatch = useDispatch()
-
-  useEffect(() => {
-			dispatch(getAudio({
-				api :'/api/audios'
-			}))
-
-  }, [dispatch]);
-  
-	
-  return (
-    <div id="1" className={styles.AudioList}>
-		
-		<Filter
-		filterText={filterText}
-		setFilterText={setFilterText}
-		/>
-		{/* <MappedAudios filterText={filterText}/> */}
-
-  </div>
-  );
-};
+function AudioList() {
+	const {tracks} = useSelector(state=> state.audios)
+	const [filterText, setFilterText] = useState('')
+	return ( 
+		<div className={styles.Audios}>
+			<Filter
+				filterText={filterText}
+				setFilterText={setFilterText}
+			/>
+			<ul className={styles.list}>
+				{tracks.map((el, index)=>
+					el.filename.indexOf(filterText)>=0 && <li key={el._id}><AudioItem  selfIndex={index}/></li>
+					)
+					}
+			</ul>
+		</div>
+	);
+}
 
 export default AudioList;

@@ -1,54 +1,53 @@
-import {memo} from "react";
-import { ReactComponent as Play } from "../../../../assets/play.svg";
-import { ReactComponent as Pause } from "../../../../assets/pause.svg";
-import { ReactComponent as Next } from "../../../../assets/next.svg";
-import { ReactComponent as Prev } from "../../../../assets/prev.svg";
+
+import {ReactComponent as Next} from '../../../../assets/next.svg'
+import {ReactComponent as Prev} from '../../../../assets/prev.svg'
+import {ReactComponent as Play} from '../../../../assets/play.svg'
+import {ReactComponent as Pause} from '../../../../assets/pause.svg'
 import styles from "./AudioControls.module.css"
+import { useSelector } from 'react-redux'
 
 
-const AudioControls = ({isPlaying, onPlayPauseClick, onNextTrack, onPrevTrack}) => {
-
-	
-	return(
-  <div className={styles.audioControls}>
-    {isPlaying && <button
+function AudioControls({handlePlayPauseClick, handleNextClick, handlePrevClick}) {
+	const isPlaying = useSelector(state=>state.audios.isPlaying)
+	return ( 
+		<div className={styles.AudioControls}>
+    <button
       type="button"
+      className={styles.prev}
       aria-label="Previous"
-			onClick={onPrevTrack}
+      onClick={handlePrevClick}
     >
-      <Prev className={styles.svg}/>
+      <Prev />
     </button>
-		}
     {isPlaying ? (
       <button
         type="button"
         className={styles.pause}
+        onClick={() => handlePlayPauseClick(false)}
         aria-label="Pause"
-				onClick={onPlayPauseClick}
       >
-        <Pause className={`${styles.svgPausePlay} ${styles.svg}`}/>
+        <Pause />
       </button>
     ) : (
       <button
         type="button"
         className={styles.play}
+        onClick={() => handlePlayPauseClick(true)}
         aria-label="Play"
-				onClick={onPlayPauseClick}
       >
-        <Play className={styles.svg}/>
+        <Play />
       </button>
     )}
-    {isPlaying && <button
+    <button
       type="button"
       className={styles.next}
       aria-label="Next"
-			onClick={onNextTrack}
+      onClick={handleNextClick}
     >
-      <Next className={styles.svg}/>
+      <Next />
     </button>
-		}
-  </div>
-)};
+		</div>
+	);
+}
 
-export default memo(AudioControls);
-
+export default AudioControls;
