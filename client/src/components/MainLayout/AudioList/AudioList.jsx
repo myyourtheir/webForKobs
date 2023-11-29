@@ -15,7 +15,7 @@ function AudioList() {
 			/>
 			<ul className={styles.list}>
 				{tracks.map((el, index)=>
-					el.filename.indexOf(filterText)>=0 && <li><AudioItem key={el._id} selfIndex={index}/></li>
+					el.filename.indexOf(filterText)>=0 && <li key={el._id}><AudioItem  selfIndex={index}/></li>
 					)
 					}
 			</ul>

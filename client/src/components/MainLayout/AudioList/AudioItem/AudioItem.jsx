@@ -5,13 +5,12 @@ import styles from './AudioItem.module.css'
 import { setIndexOfPlaying, setIsPlaying } from '../../../../store/audioSlice'
 
 
+
 function AudioItem({selfIndex}) {
 	const {tracks, currentIndex, isPlaying} = useSelector(state=> state.audios)
-	const dispatch =useDispatch()
-	console.log(selfIndex)
-
-
 	
+	const dispatch = useDispatch()
+
 	const handlePlayPauseClick =() => {
 		if (currentIndex!==selfIndex)	{
 		dispatch(	setIndexOfPlaying(selfIndex))
@@ -22,32 +21,28 @@ function AudioItem({selfIndex}) {
 			dispatch(setIsPlaying(true))
 		}
 	}
-
+	const boolExpresion = (ifTrue, ifFalse)=>{
+		if (currentIndex===selfIndex){
+			if (isPlaying){
+				return ifTrue
+			}else{
+				return ifFalse
+			}
+		}else{
+			return ifFalse
+		}
+	}
 	return ( 
-		<div className={styles.Audio} >
-			<>
-				{selfIndex===currentIndex
-					? (isPlaying
-						? <button
-								onClick={handlePlayPauseClick}
-							>
-							<Pause/>
-						</button>
-						: <button
-								onClick={handlePlayPauseClick}
-							>
-								<Play/>
-							</button>)
-					: <button
-							onClick={handlePlayPauseClick}
-						>
-							<Play/>
-						</button>
-				
-					}
-				
+		<div className={`${styles.Audio} ${boolExpresion(styles.playing, styles.paused)}` }  >
 
-			</>
+			{boolExpresion(
+							<button onClick={handlePlayPauseClick}>
+								<Pause/>
+							</button>
+							,<button onClick={handlePlayPauseClick}>
+								<Play/>
+							</button>
+							)}
 
 			<p className={styles.filename}>{tracks[selfIndex].filename}</p>
 		</div>
