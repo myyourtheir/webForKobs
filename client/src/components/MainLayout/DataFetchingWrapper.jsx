@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 
 function DataFetchingWrapper() {
-	const data = useSelector(state=>state.audios.data)
+	const data = useSelector(state=>state.audios.tracks)
 	const dispatch = useDispatch()
 	let ignore = false
 	

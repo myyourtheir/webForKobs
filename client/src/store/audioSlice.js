@@ -22,14 +22,14 @@ export const getAudio = createAsyncThunk(
 	name: 'audio',
 	initialState:{
 		isLoading: true,
-		data: null,
+		tracks: null,
 		error: null,
-		indexOfPlaying: 0,
+		currentIndex: 0,
 		isPlaying: false,
 	},
 	reducers:{
 		setIndexOfPlaying:(state,action)=>{
-			state.indexOfPlaying = action.payload
+			state.currentIndex = action.payload
 		},
 		setIsPlaying:(state,action)=>{
 			state.isPlaying = action.payload
@@ -41,7 +41,7 @@ export const getAudio = createAsyncThunk(
 		})
 		builder.addCase(getAudio.fulfilled, (state,action)=>{
 			state.isLoading=false
-			state.data=action.payload
+			state.tracks=action.payload
 			state.error = null
 		})
 		builder.addCase(getAudio.rejected, (state,action)=>{
